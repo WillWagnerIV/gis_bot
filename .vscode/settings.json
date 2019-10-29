@@ -1,5 +1,5 @@
 {
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.pythonPath": "/home/autobot/archiconda3/bin/python"
+    "python.pythonPath": "Library/Frameworks/Python.framework/Versions/3.7/bin/python3"
 }
