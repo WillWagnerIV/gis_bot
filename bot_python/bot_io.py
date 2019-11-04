@@ -2,8 +2,8 @@
 # Will Wagner
 
 import bot_conv as bcon
-import pandas as pd 
-import numpy as np
+# import pandas as pd 
+# import numpy as np
 import matplotlib.pyplot as plt
 from math import degrees, radians, cos, sin, asin, atan2, sqrt, pi
 
@@ -13,6 +13,7 @@ def create_test_lidar_data(num_rows):
     angle = 0
     offset = 0
     size = 1
+
 
     fig, temp_plot = plt.subplots()
 

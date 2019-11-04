@@ -8,7 +8,6 @@ import bot_conv as bcon
 import bot_io as bio
 
 
-
 # Main Bot Class
 class Bot:
     def __init__(self ):
