@@ -4,6 +4,8 @@
 import jetson.inference
 import jetson.utils
 import ctypes
+import argparse
+import sys
 
 # Installed object detection models
 tfNets = ["ssd-mobilenet-v2", "pednet", "fcn-resnet18-mhp", "fcn-resnet18-sun", "fcn-resnet18-deepscene"]
@@ -27,6 +29,9 @@ def showClassification_GLWindow(tfnet, camera):
         detections = net.Detect(img, width, height)
         display.RenderOnce(img, width, height)
         display.SetTitle("Object Detection | Network {:.0f} FPS".format(net.GetNetworkFPS()))
+
+    for x in range ( len ( detections ) ):
+        print (detections[x])
 
 
 
@@ -75,8 +80,6 @@ def showSegmentation_GLWindow(tfnet, camera):
 
 #Main Loop
 while __name__ == "__main__":
-
-
     
     main_menu = True
     

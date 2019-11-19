@@ -31,10 +31,10 @@ class Motor:
     
 
 
-# test_motor = Motor(mo_speed=225)
-# # test_motor.mspeed = 10
-# print (test_motor.mspeed)
-# print (test_motor.m_dir)
-# test_motor.spin_motor(225,.5)
-# print (test_motor.mspeed)
+test_motor = Motor(mo_speed=225)
+# test_motor.mspeed = 10
+print (test_motor.mspeed)
+print (test_motor.m_dir)
+test_motor.spin_motor(225,.5)
+print (test_motor.mspeed)
 
