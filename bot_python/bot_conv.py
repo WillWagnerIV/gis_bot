@@ -104,12 +104,12 @@ def point_to_point_xy(point1,point2):
 
 
 
-# print ("\n\n\n")
-# x,y,z,timestamp = latlong_to_cart (34.0966667, -117.7188889)
-# print (x,y,z,timestamp)
+print ("\n\n\n")
+x,y,z,timestamp = latlong_to_cart (34.0966667, -117.7188889)
+print (x,y,z,timestamp)
 
-# lat,lon,timestamp = cart_to_latlong(x,y,z)
-# print (lat,lon,timestamp)
+lat,lon,timestamp = cart_to_latlong(x,y,z)
+print (lat,lon,timestamp)
 
 
 # radial_to_cart(235,20.05)
