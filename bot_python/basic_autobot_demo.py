@@ -11,7 +11,7 @@ import sys
 tfNets = ["ssd-mobilenet-v2", "pednet", "fcn-resnet18-mhp", "fcn-resnet18-sun", "fcn-resnet18-deepscene"]
 
 # Define the camera to be used
-camera = jetson.utils.gstCamera(1280, 720, "0")
+camera = jetson.utils.gstCamera(1024, 720, "0")
 # camera = jetson.utils.gstCamera(1920, 1080, "/dev/video0")
 
 
@@ -40,8 +40,8 @@ def showSegmentation_GLWindow(tfnet, camera):
     ignore_class = "void"
     filter_mode = "linear"
     alpha = 105
-    width = 1920
-    height = 1080
+    width = 1024
+    height = 720
 
     # Load the object detection model
     net = jetson.inference.segNet(tfnet, camera)
@@ -51,7 +51,7 @@ def showSegmentation_GLWindow(tfnet, camera):
 
     # allocate the output images for the overlay & mask
     img_overlay = jetson.utils.cudaAllocMapped(width * height * 4 * ctypes.sizeof(ctypes.c_float))
-    img_mask = jetson.utils.cudaAllocMapped(width/2 * height/2 * 4 * ctypes.sizeof(ctypes.c_float)) 
+    img_mask = jetson.utils.cudaAllocMapped((width/2) * (height/2) * 4 * ctypes.sizeof(ctypes.c_float))
 
     # Show the openGL window
     display = jetson.utils.glDisplay()

@@ -1,5 +1,5 @@
 from rplidar import RPLidar
-lidar = RPLidar('/dev/ttyUSB1')
+lidar = RPLidar('/dev/uart_bridge')
 
 info = lidar.get_info()
 print(info)

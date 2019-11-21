@@ -93,7 +93,8 @@ def get_destination():
 
     return end_point
 
-
+def admin_menu():
+    print ("Need to add ADMIN MENU CODE HERE (like image cap/classification")
 
 # Main Loop
 if __name__ == "__main__":
@@ -123,6 +124,7 @@ if __name__ == "__main__":
         print ("6 -- Add Waypoint(s)")
         print ("7 -- Save Mission")
         print ("8 -- Load Mission")
+        print ("9 -- Admin Functions")
         print ()    
         print ("0 -- Quit")
         print()
@@ -144,6 +146,9 @@ if __name__ == "__main__":
 
         elif menu_choice == 5:
             complete_mission ()
+
+        elif menu_choice == 9:
+            admin_menu()
             
 
         elif menu_choice == 0: break
