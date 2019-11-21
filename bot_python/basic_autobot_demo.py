@@ -7,19 +7,13 @@ import ctypes
 import argparse
 import sys
 
-# Installed object detection models
-tfNets = ["ssd-mobilenet-v2", "pednet", "fcn-resnet18-mhp", "fcn-resnet18-sun", "fcn-resnet18-deepscene"]
-
-# Define the camera to be used
-camera = jetson.utils.gstCamera(1024, 720, "0")
-# camera = jetson.utils.gstCamera(1920, 1080, "/dev/video0")
 
 
 
-def showClassification_GLWindow(tfnet, camera):
+def showClassification_GLWindow(net, camera):
 
     # Load the object detection model
-    net = jetson.inference.detectNet(tfnet, threshold=0.5)
+    net = jetson.inference.detectNet(net, threshold=0.5)
 
     # Show the openGL window
     display = jetson.utils.glDisplay()
@@ -37,11 +31,20 @@ def showClassification_GLWindow(tfnet, camera):
 
 def showSegmentation_GLWindow(tfnet, camera):
 
+
     ignore_class = "void"
     filter_mode = "linear"
     alpha = 105
-    width = 1024
+    width = 1280
     height = 720
+
+
+
+    # parser.add_argument("--network", type=str, default="fcn-resnet18-voc", help="pre-trained model to load, see below for options")
+    # parser.add_argument("--camera", type=str, default="0", help="index of the MIPI CSI camera to use (e.g. CSI camera 0)\nor for VL42 cameras, the /dev/video device to use.\nby default, MIPI CSI camera 0 will be used.")
+    # parser.add_argument("--width", type=int, default=1280, help="desired width of camera stream (default is 1280 pixels)")
+    # parser.add_argument("--height", type=int, default=720, help="desired height of camera stream (default is 720 pixels)")
+
 
     # Load the object detection model
     net = jetson.inference.segNet(tfnet, camera)
@@ -49,9 +52,11 @@ def showSegmentation_GLWindow(tfnet, camera):
     # set the alpha blending value
     net.SetOverlayAlpha(alpha)
 
+
     # allocate the output images for the overlay & mask
     img_overlay = jetson.utils.cudaAllocMapped(width * height * 4 * ctypes.sizeof(ctypes.c_float))
-    img_mask = jetson.utils.cudaAllocMapped((width/2) * (height/2) * 4 * ctypes.sizeof(ctypes.c_float))
+
+    img_mask = jetson.utils.cudaAllocMapped(width/2 * height/2 * 4 * ctypes.sizeof(ctypes.c_float))
 
     # Show the openGL window
     display = jetson.utils.glDisplay()
@@ -71,7 +76,7 @@ def showSegmentation_GLWindow(tfnet, camera):
         # render the images
         display.BeginRender()
         display.Render(img_overlay, width, height)
-        display.Render(img_mask, width/2, height/2, width)
+        display.Render(img_mask, width/2, height/2, width, height)
         display.EndRender()
 
         # update the title bar
@@ -79,7 +84,15 @@ def showSegmentation_GLWindow(tfnet, camera):
 
 
 #Main Loop
-while __name__ == "__main__":
+if __name__ == "__main__":
+
+    # Installed object detection models
+    nets = ["ssd-mobilenet-v2", "pednet", "fcn-resnet18-mhp", "fcn-resnet18-sun", "fcn-resnet18-deepscene"]
+
+    # Define the camera to be used
+    camera = jetson.utils.gstCamera(1280, 720, "0")
+    # camera = jetson.utils.gstCamera(1920, 1080, "/dev/video0")
+
     
     main_menu = True
     
@@ -100,10 +113,10 @@ while __name__ == "__main__":
             print ("Please choose from the menu.")
 
         if  0 < demomode <= 2:
-            showClassification_GLWindow(tfNets [demomode-1], camera)
+            showClassification_GLWindow(nets [demomode-1], camera)
 
         elif  2 < demomode <= 9:
-            showSegmentation_GLWindow(tfNets [demomode-1], camera)
+            showSegmentation_GLWindow(nets [demomode-1], camera)
 
         else:
             print ("Please choose from the menu.")  
@@ -113,7 +126,7 @@ while __name__ == "__main__":
 
     
 
-    break
+    
 
 
 
