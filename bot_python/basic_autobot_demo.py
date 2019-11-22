@@ -1,11 +1,14 @@
 # GIS Practicum Main Demo
 # Will Wagner
 
+import sys
+sys.path.append("/usr/lib/python3.6/")
+
 import jetson.inference
 import jetson.utils
 import ctypes
 import argparse
-import sys
+
 
 
 
