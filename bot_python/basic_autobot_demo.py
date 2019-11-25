@@ -2,15 +2,14 @@
 # Will Wagner
 
 import sys
-sys.path.append("/usr/lib/python3.6/")
+
 
 import jetson.inference
 import jetson.utils
 import ctypes
 import argparse
 
-
-
+# import glViewport
 
 
 def showClassification_GLWindow(net, camera):
@@ -63,6 +62,7 @@ def showSegmentation_GLWindow(tfnet, camera):
 
     # Show the openGL window
     display = jetson.utils.glDisplay()
+    glViewport(0, 0, width, height)
 
     while display.IsOpen():
 
