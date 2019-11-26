@@ -105,5 +105,6 @@ venv.bak/
 
 # VS Code
 .settings.json
-*.vscode*
+*.vscode/*
 jetbot/*
+.vscode/settings.json
