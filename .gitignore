@@ -109,3 +109,5 @@ venv.bak/
 jetbot/*
 jetbot
 jetson-inference
+.vscode/settings.json
+.~lock.TX2 Installation Notes.odt#
