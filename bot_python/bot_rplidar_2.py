@@ -5,9 +5,7 @@ import matplotlib.pyplot as plt
 
 
 
-
-
-lidar = RPLidar('/dev/ttyUSB0')
+lidar = RPLidar('/dev/uart_bridge')
 
 info = lidar.get_info()
 print(info)
