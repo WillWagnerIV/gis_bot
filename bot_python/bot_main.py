@@ -5,7 +5,7 @@
 
 import bot_moco as moco
 import bot_conv as bcon 
-import bot_io as bio
+import bot_io
 
 
 # Main Bot Class
