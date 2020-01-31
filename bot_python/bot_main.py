@@ -18,6 +18,7 @@ class Bot:
     bot_type = "ground"  # ground, flying
     mode = "indoor" # indoor, outdoor
     ip_addr = "192.168.1.150"
+    n
     right_motor_1 = moco.Motor()
     right_motor_2 = None
     left_motor_1 = moco.Motor()
